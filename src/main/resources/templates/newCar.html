@@ -1,0 +1,35 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>new car</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Insert new car information</h1>
+	<div>
+	<form action="#" th:object="${car}" th:action="@{saveCar}" method="post">
+		  	<div>
+		  		<label>Brand</label>
+				<input type="text" th:field="*{brand}" />
+				<div th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}">Error</div>	
+			</div>
+			
+			<div>
+		  		<label>Model</label>
+		  		<input type="text" th:field="*{model}" />
+		  		<div th:if="${#fields.hasErrors('model')}" th:errors="*{model}">Error</div>	
+			</div>
+			
+			<label>Owner</label>
+			 <select id="owners" th:field="*{owner}">
+       			<option th:each="owner: ${owners}" th:value="${owner.id}" th:text="${owner.lastName} + ' ' +  ${owner.firstName}"></option>
+    		</select>						
+			<input type="submit" value="Save"></input>
+		</form>
+	
+	</div>
+
+ 	
+</body>
+</html>

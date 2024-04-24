@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Edit car</h1>
+	<div>
+	<form th:object="${editCar}" th:action="@{/saveEditedCar}" action="#" method="post">
+		  	<input type="hidden" id="id" th:field="*{id}" />
+		  	<div>
+		  	<label>Brand</label>
+			<input type="text" th:field="*{brand}" />
+			</div>
+			<div>
+		  	<label>Model</label>
+		  	<input type="text" th:field="*{model}" />
+			</div>
+		  	<label>Owner</label>
+			 <select id="owners" th:field="*{owner}">
+       			<option th:each="owner: ${owners}" th:value="${owner.id}" th:text="${owner.lastName} + ' ' + ${owner.firstName}"></option>
+    		</select>			
+			<input type="submit" value="Save"></input>
+		</form>
+	
+	</div>
+
+ 	
+</body>
+</html>
